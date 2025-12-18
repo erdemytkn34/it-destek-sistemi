@@ -1,2 +1,2 @@
 # it-destek-sistemi
-bilgi işlemde kullanılan destek sistemi
+bilgi işlem biriminde kullanılan destek sistemi
