@@ -1,11 +1,9 @@
+package itdestekuygulamasi;
 
-package itdestekuygulamasý;
-
-    import java.util.Scanner;
+import java.util.Scanner;
 
 public class ItDestekUygulamasý {
 
-       
     static Scanner scanner = new Scanner(System.in);
 
     static String[] talepId = new String[100];
@@ -14,9 +12,7 @@ public class ItDestekUygulamasý {
     static String[] durum = new String[100];
 
     static int talepSayisi = 0;
-    
-     
-    
+
     static void menuGoster() {
         System.out.println("\n--- IT DESTEK SÝSTEMÝ ---");
         System.out.println("1- Talep Ekle");
@@ -30,7 +26,7 @@ public class ItDestekUygulamasý {
 
     static void talepEkle() {
         if (talepSayisi >= 100) {
-            System.out.println("Talep kapasitesi dolu!");
+            System.out.println("Talep kapasitesi dolu.");
             return;
         }
 
@@ -38,23 +34,24 @@ public class ItDestekUygulamasý {
         String id = scanner.nextLine();
 
         for (int i = 0; i < talepSayisi; i++) {
-            if (talepId[i].equals(id)) {
-                System.out.println("Bu ID zaten var!");
+            if (id.equals(talepId[i])) {
+                System.out.println("Bu ID zaten mevcut.");
                 return;
             }
         }
-        
-        System.out.print("Ad Soyad: ");
+
         talepId[talepSayisi] = id;
+
+        System.out.print("Ad Soyad: ");
         adSoyad[talepSayisi] = scanner.nextLine();
 
         System.out.print("Problem: ");
         problem[talepSayisi] = scanner.nextLine();
 
-        durum[talepSayisi] = "Acik";
+        durum[talepSayisi] = "Açýk";
         talepSayisi++;
 
-        System.out.println("Talep eklendi.");
+        System.out.println("Talep baþarýyla eklendi.");
     }
 
     static void talepSil() {
@@ -62,13 +59,15 @@ public class ItDestekUygulamasý {
         String id = scanner.nextLine();
 
         for (int i = 0; i < talepSayisi; i++) {
-            if (talepId[i].equals(id)) {
+            if (id.equals(talepId[i])) {
+
                 for (int j = i; j < talepSayisi - 1; j++) {
                     talepId[j] = talepId[j + 1];
                     adSoyad[j] = adSoyad[j + 1];
                     problem[j] = problem[j + 1];
                     durum[j] = durum[j + 1];
                 }
+
                 talepSayisi--;
                 System.out.println("Talep silindi.");
                 return;
@@ -82,8 +81,8 @@ public class ItDestekUygulamasý {
         String id = scanner.nextLine();
 
         for (int i = 0; i < talepSayisi; i++) {
-            if (talepId[i].equals(id)) {
-                System.out.print("Yeni durum (Yapýlmadý / Yapýldý): ");
+            if (id.equals(talepId[i])) {
+                System.out.print("Yeni Durum (Yapýlmadý / Yapýldý): ");
                 durum[i] = scanner.nextLine();
                 System.out.println("Talep güncellendi.");
                 return;
@@ -97,12 +96,12 @@ public class ItDestekUygulamasý {
         String id = scanner.nextLine();
 
         for (int i = 0; i < talepSayisi; i++) {
-            if (talepId[i].equals(id)) {
+            if (id.equals(talepId[i])) {
                 System.out.println(
-                    talepId[i] + " - " +
-                    adSoyad[i] + " - " +
-                    problem[i] + " - " +
-                    durum[i]
+                        talepId[i] + " | " +
+                        adSoyad[i] + " | " +
+                        problem[i] + " | " +
+                        durum[i]
                 );
                 return;
             }
@@ -112,22 +111,23 @@ public class ItDestekUygulamasý {
 
     static void talepleriListele() {
         if (talepSayisi == 0) {
-            System.out.println("Kayýt yok.");
+            System.out.println("Kayýt bulunmamaktadýr.");
             return;
         }
 
+        System.out.println("ID | Ad Soyad | Problem | Durum");
+        System.out.println("--------------------------------");
+
         for (int i = 0; i < talepSayisi; i++) {
             System.out.println(
-                talepId[i] + " | " +
-                adSoyad[i] + " | " +
-                problem[i] + " | " +
-                durum[i]
+                    talepId[i] + " | " +
+                    adSoyad[i] + " | " +
+                    problem[i] + " | " +
+                    durum[i]
             );
         }
-    
     }
-    
-     
+
     public static void main(String[] args) {
         int secim;
 
@@ -156,8 +156,9 @@ public class ItDestekUygulamasý {
                     System.out.println("Programdan çýkýlýyor...");
                     break;
                 default:
-                    System.out.println("Hatalý seçim!");
+                    System.out.println("Hatalý seçim.");
             }
+
         } while (secim != 0);
-    }    
+    }
 }
